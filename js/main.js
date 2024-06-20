@@ -87,11 +87,24 @@ posts.forEach(post => {
                                         </a>
                                     </div>
                                     <div class="likes__counter">
-                                        Piace a <b id="like-counter-1" class="js-likes-counter">${post.likes}</b> persone
+                                        Piace a <b id="like-counter-${post.id}" class="js-likes-counter">${post.likes}</b> persone
                                     </div>
                                 </div> 
                             </div>            
                         </div>`;
     postContainer.innerHTML += postElement;
 });
+
+// al click del mi piace il pulsante cambia colore e i like aumentano di uno
+// creo evento click per mi piace
+const likeButton = document.querySelectorAll(".js-like-button");
+console.log(likeButton);
+likeButton.forEach(element => {
+    element.addEventListener("click",
+        function() {
+            element.classList.add("like-button--liked")
+        }   
+    );
+});
+
 
