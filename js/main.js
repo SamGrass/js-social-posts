@@ -81,7 +81,7 @@ posts.forEach(post => {
                             <div class="post__footer">
                                 <div class="likes js-likes">
                                     <div class="likes__cta">
-                                        <a class="like-button  js-like-button" href="#" data-postid="${post.id}}">
+                                        <a class="like-button  js-like-button" href="#!" data-postid="${post.id}}">
                                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                                             <span class="like-button__label">Mi Piace</span>
                                         </a>
@@ -97,14 +97,24 @@ posts.forEach(post => {
 
 // al click del mi piace il pulsante cambia colore e i like aumentano di uno
 // creo evento click per mi piace
-const likeButton = document.querySelectorAll(".js-like-button");
-console.log(likeButton);
-likeButton.forEach(element => {
-    element.addEventListener("click",
+const likesButton = document.querySelectorAll(".js-like-button");
+console.log(likesButton);
+const likesCounter = document.querySelectorAll(".js-likes-counter");
+console.log(likesCounter);
+for(let i = 0; i < likesButton.length; i++) {
+    let likeBtn = likesButton[i];
+    likeBtn.addEventListener("click",
         function() {
-            element.classList.add("like-button--liked")
+            likeBtn.classList.add("like-button--liked")
+            if (likeBtn.classList.contains("like-button--liked")) {
+                let likeCount = likesCounter[i];
+                let likeValue = likeCount.innerHTML;
+                likeValue++;
+                likeCount.innerHTML = likeValue;
+            }   
+            
         }   
     );
-});
+};
 
 
